@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .controls input, .controls textarea, .controls button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .controls button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      background-color: #0056b3;
+    }
+    .controls input, .controls textarea {
+      flex: 1;
+    }
+    .controls textarea {
+      resize: none;
+      height: 40px;
+    }
+    .print-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .card canvas {
+      margin-bottom: 10px;
+    }
+    .card-title {
+      text-align: center;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    @media print {
+      .controls, .delete-btn {
+        display: none;
+      }
+      body::after {
+        content: none !important;
+      }
+      @page {
+        margin: 0;
+      }
+      body {
+        margin: 1.6cm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <input type="text" id="title-input" placeholder="Enter title">
+    <textarea id="text-input" placeholder="Enter text to generate QR code"></textarea>
+    <button id="generate-btn">Add QR Code</button>
+    <button id="delete-all-btn">Delete All</button>
+    <button onclick="window.print()">Print</button>
+  </div>
+  <div class="print-area" id="print-area"></div>
+
+  <script src="bundle.js"></script>
+</body>
+</html>
+
